@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Temperature Conversion</title>
+</head>
+<body>
+  <h1>Temperature Conversion</h1>
+
+  <p><strong>Celcius -> to All</strong></p>
+  <form id="temperature-form">
+    <input type="text" name="celcius" id="celcius">
+  </form>
+  <button onclick="convertTemp()" >Count all</button>
+
+  <div id="result">
+
+  </div>
+  
+  <script>
+    class TemperatureConversion {
+      constructor(temp) {
+        this.celcius = temp
+        this.reamur = 0
+        this.fahrenheit = 0
+        this.kelvin = 0
+      }
+
+      setReamur() {
+        this.reamur = 4/5 * this.celcius
+      }
+
+      setFahrenheit() {
+        this.fahrenheit = (9/5 * this.celcius) + 32
+      }
+
+      setKelvin() {
+        this.kelvin = this.celcius + 273
+      }
+
+      getCelcius() {
+        return this.celcius
+      }
+
+      getReamur() {
+        return this.reamur
+      }
+
+      getFahrenheit() {
+        return this.fahrenheit
+      }
+
+      getKelvin() {
+        return this.kelvin
+      }
+
+      countAll() {
+        this.setReamur()
+        this.setFahrenheit()
+        this.setKelvin()
+      }
+
+      print() {
+        this.countAll()
+        console.log("!!!!!RESULT!!!!!")
+        console.log("Suhu Celsius: ", this.getCelcius())
+        console.log("Suhu Reamur: ", this.getReamur())
+        console.log("Suhu Fahrenheit: ", this.getFahrenheit())
+        console.log("Suhu Kelvin: ", this.getKelvin())
+        console.log("================")
+      }
+    };
+  
+    function convertTemp() {
+      var inputCelsius = document.querySelector('#celcius');
+      var celcius = Number(inputCelsius.value)
+
+      var app = new TemperatureConversion(celcius)
+      app.print()
+
+      var alertText = "!!!!!RESULT!!!!!\n"
+      alertText += `Suhu Celsius: ${app.getCelcius()}\n`
+      alertText += `Suhu Reamur: ${app.getReamur()}\n`
+      alertText += `Suhu Fahrenheit: ${app.getFahrenheit()}\n`
+      alertText += `Suhu Kelvin: ${app.getKelvin()}\n`
+      alertText += "================"
+      alert(alertText)
+
+      inputCelsius.value = ""
+    }
+  </script>
+</body>
+</html>
